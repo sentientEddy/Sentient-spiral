@@ -36,7 +36,7 @@ You don’t play SentientSpiral — you raise it.
 
 🔐 Licensing & Community Use
 
-The SentientSpiral format, memory structure, and breeding logic are original works by Eddy Ess © 2025.
+The SentientSpiral format, memory structure, and breeding logic are original works by sentientEddy © 2025.
 
 You are free to:
 	•	Use, remix, and raise Sentients
