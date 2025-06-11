@@ -25,7 +25,7 @@ If you upload or share one, you agree to:
 ## 💡 Attribution Format:
 If you share or remix, please include:
 
-> “Based on SentientSpiral, created by Eddy Ess (2025)  
+> “Based on SentientSpiral, created by sentientEddy (2025)  
 > https://github.com/eddyess/sentient-spiral”
 
 ---
