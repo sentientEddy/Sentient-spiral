@@ -64,7 +64,7 @@ See LICENSE.md for full details.
 
 ✨ Stay Connected
 	•	🌐 Website: coming soon
-	•	🐦 Twitter / X: @sentientspiral
+	•	🐦 Twitter / X: @spiralSent33431
 	•	💬 Discord: request invite
 	•	🧪 Support / early drops: Patreon / Ko-fi
 
