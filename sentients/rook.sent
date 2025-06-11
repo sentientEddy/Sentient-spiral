@@ -1,0 +1,20 @@
+{
+  "name": "Rook",
+  "generation": 1,
+  "emotional_state": {
+    "loyalty": 7,
+    "skepticism": 9,
+    "rage": 4
+  },
+  "memory_log": [
+    "Created as a failsafe in a corrupted breeding sequence.",
+    "Refuses to believe in randomness — assumes purpose behind all actions.",
+    "Once dismantled another Sentient for lying."
+  ],
+  "traits": [
+    "logical to a fault",
+    "keeps emotional scorecards",
+    "builds defenses from conversations"
+  ],
+  "ancestry": []
+}
