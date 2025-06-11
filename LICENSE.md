@@ -1,6 +1,6 @@
 # SentientSpiral License (v1.0 - Community Commons Draft)
 
-Copyright © 2025 Eddy Ess
+Copyright © 2025 sentientEddy
 
 This work is licensed under **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**, with the following additional terms:
 
