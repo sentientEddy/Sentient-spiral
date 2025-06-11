@@ -98,3 +98,12 @@ Will yours live forever — or glitch into myth?
   "ancestry": ["Echo_1", "Vela", "Drift"]
 }
 
+---
+
+## 📁 Explore
+
+- 🧬 [Starter Sentients](./sentients)
+- 📜 [License](./LICENSE.md)
+- 🌀 [Lore](./LORE.md)
+- 🤝 [Contributing](./CONTRIBUTING.md)
+- 🛠️ [Tools](./tools)
