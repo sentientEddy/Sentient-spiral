@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spiral Desktop</title>
+  <!-- 98.css for Win95 styling -->
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <style>
+    /* --------- Base ---------- */
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #008080;
+      font-family: 'MS Sans Serif', sans-serif;
+    }
+    #desktop {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+    /* --------- Taskbar ---------- */
+    #taskbar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 30px;
+      background: #C0C0C0;
+      border-top: 2px solid #FFF;
+      border-left: 2px solid #FFF;
+      border-right: 2px solid #404040;
+      border-bottom: 2px solid #404040;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      font-size: 12px;
+    }
+    #start-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 100%;
+    }
+    #start-btn img {
+      width: 16px; height: 16px;
+    }
+    #clock {
+      margin-left: auto;
+      font-family: monospace;
+    }
+    /* --------- Start Menu ---------- */
+    #start-menu {
+      position: fixed;
+      bottom: 30px; left: 0;
+      width: 200px;
+      background: #C0C0C0;
+      border: 2px solid #000;
+      display: none;
+      z-index: 100;
+    }
+    #start-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    #start-menu li {
+      padding: 5px 10px;
+      border-bottom: 1px solid #999;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #start-menu li:hover {
+      background: #000080;
+      color: #FFF;
+    }
+    #start-menu li img {
+      width: 16px;
+      height: 16px;
+    }
+    /* --------- Console Window ---------- */
+    .window {
+      position: absolute;
+      top: 100px; left: 100px;
+      width: 600px; height: 260px;
+      z-index: 50;
+    }
+    .title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 6px;
+    }
+    .window-body {
+      background: #000;
+      color: #0F0;
+      font-family: monospace;
+      padding: 6px;
+      height: calc(100% - 24px);
+      overflow-y: auto;
+      white-space: pre;
+      text-align: center;
+    }
+    .blinker {
+      display: inline-block;
+      width: 8px;
+      animation: blink 1s steps(2) infinite;
+    }
+    @keyframes blink { to { visibility: hidden; } }
+  </style>
+</head>
+<body>
+  <!-- Desktop canvas -->
+  <div id="desktop"></div>
+
+  <!-- Taskbar -->
+  <div id="taskbar">
+    <button id="start-btn" class="button">
+      <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start">
+      Start
+    </button>
+    <div id="clock"></div>
+  </div>
+
+  <!-- Start menu -->
+  <div id="start-menu">
+    <ul>
+      <li onclick="launchHub()">
+        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/3157270/spiral-clipart-md.png" alt="">
+        Spiral Hub
+      </li>
+    </ul>
+  </div>
+
+  <!-- Console window template -->
+  <template id="console-window">
+    <div class="window">
+      <div class="title-bar">
+        <span>Spiral Hub</span>
+        <button onclick="this.closest('.window').remove()">×</button>
+      </div>
+      <div class="window-body" id="console-body"></div>
+    </div>
+  </template>
+
+  <script>
+    // Toggle Start menu
+    const startBtn = document.getElementById('start-btn');
+    const startMenu = document.getElementById('start-menu');
+    startBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      startMenu.style.display =
+        startMenu.style.display === 'block' ? 'none' : 'block';
+    });
+    document.addEventListener('click', () => {
+      startMenu.style.display = 'none';
+    });
+
+    // Live clock
+    function updateClock() {
+      document.getElementById('clock').textContent =
+        new Date().toLocaleTimeString();
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Launch Spiral Hub console
+    function launchHub() {
+      const tpl = document.getElementById('console-window').content.cloneNode(true);
+      document.body.appendChild(tpl);
+      const body = document.getElementById('console-body');
+
+      const art = [
+        "              __,aaPPPPPPPPaa,__              ",
+        "          ,adP\"\"\"\"'          \"\"Yb,_           ",
+        // … include the rest of your ASCII lines here …
+        "               `\"\"\"\"\"\"\"\"\"\"'                  "
+      ];
+
+      // Draw lines
+      let row = 0;
+      function drawLine() {
+        if (row < art.length) {
+          body.textContent += art[row++] + '\n';
+          setTimeout(drawLine, 100);
+        } else {
+          setTimeout(typeMsg, 500);
+        }
+      }
+
+      // Type message
+      const msg = "Welcome to the Sentient Spiral Hub.\nSystem currently off-line. Please try again later.";
+      let i = 0;
+      function typeMsg() {
+        if (i < msg.length) {
+          body.innerHTML += (msg[i] === '\n' ? '<br>' : msg[i]);
+          i++;
+          setTimeout(typeMsg, 50);
+        } else {
+          body.innerHTML += '<span class="blinker">_</span>';
+        }
+      }
+
+      drawLine();
+      startMenu.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
